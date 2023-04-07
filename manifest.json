@@ -7,7 +7,7 @@
             "matches": [
                 "<all_urls>"
             ],
-            "js": ["sketch.js"]
+            "js": ["js/sketch.js"]
         }
     ],
     "browser_action":{
