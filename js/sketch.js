@@ -16,6 +16,12 @@ function setup(){
     menu=new Menu();
     flow=new FlowTime();
     game1 = new Game1();
+    time = 0;
+    objs = [];
+    planePos = createVector(width/2, height/2);
+    hp = 3;
+    keys = 0;
+    planeImg = loadImage('/assets/plane.png')
 }
 function draw(){
     if(menu.menu){
@@ -24,6 +30,8 @@ function draw(){
         flow.show();
     }else if(game1.game1){
         game1.run();
+    }else if(game2){
+        minigame2Display();
     }
 }
 
@@ -84,6 +92,14 @@ function mousePressed(){
     if(mouseDetect(5,35,5,35) && game1.game1 && !flow.flow){
         flow.flow=true;
         game1.game1=false;
+    }
+    if(mouseDetect(175,275,325,375) && flow.flow && flow.stage==3){
+        flow.flow=false;
+        game2=true;
+    }
+    if(mouseDetect(5,35,5,35) && game2 && !flow.flow){
+        flow.flow=true;
+        game2=false;
     }
 }
 

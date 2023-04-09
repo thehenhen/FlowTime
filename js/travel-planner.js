@@ -2,18 +2,7 @@ let objs;
 let hp;
 let planePos;
 const keyDist = 500;
-
-function setup() {
-    createCanvas(300, 500);
-    background(146,231,245);
-    frameRate(60);
-    time = 0;
-    objs = [];
-    planePos = createVector(width/2, height/2);
-    hp = 3;
-    keys = 0;
-    planeImg = loadImage('/js/plane.png')
-}
+let game2=false;
 
 function clamp(a, b, c) {
     if (b > a) return b;
@@ -21,8 +10,8 @@ function clamp(a, b, c) {
     return a;
 }
 
-function draw() {
-    background(146,231,245);
+function minigame2Display(){
+    background('#d8e1e9');
     // if (mouseX > 25 && mouseX < width-25 && mouseY > 25 && mouseY < height-30) cursor("js/plane.png", 16, 16);
     planePos.x = clamp(mouseX-20, 0, width-40);
     planePos.y = clamp(mouseY-25, 0, height-40);
@@ -53,7 +42,7 @@ function draw() {
 
     // game over
     if (hp <= 0) {
-        noLoop();
+        //noLoop();
         background(191);
         textAlign(CENTER);
         textFont('Arial', 30)
@@ -61,6 +50,15 @@ function draw() {
         text("You earned " + keys + " key" + (keys==1?"":"s") + (keys>0?"!":"."), width/2, height/2 + 40);
         cursor(ARROW);
     }
+    fill(255);
+    if(mouseDetect(5,35,5,35)){
+        fill('#cad1d9');
+    }
+    rect(20,20,30,30,5);
+    stroke(0);
+    line(15,20,25,10);
+    line(15,20,25,30);
+    noStroke(); 
 }
 
 function keyPressed() {
