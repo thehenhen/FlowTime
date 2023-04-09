@@ -3,6 +3,8 @@ let hp;
 let planePos;
 const keyDist = 500;
 let game2=false;
+let temp;
+let highScore2;
 
 function clamp(a, b, c) {
     if (b > a) return b;
@@ -30,26 +32,37 @@ function minigame2Display(){
         if (dist(o[0].x, o[0].y, planePos.x+25, planePos.y+25) < 25) {
             hp--;
             objs.splice(obj--, 1);
+            if(hp==0){
+                temp=time;
+                if(temp>highScore2){
+                    highScore2=temp;
+                    storeItem('high2',highScore2);
+                }
+            }
         }
         if (dist(o[0].x, o[0].y, width/2, height/2) > 1000) objs.splice(obj--, 1);
 
         fill(255,0,0);
-        circle(o[0].x, o[0].y, 10);
+        image(bomb,o[0].x, o[0].y);
     }
-    console.log(objs);
     fill(0);
     textAlign(LEFT,CENTER)
     textFont(f, 30);
     text("Distance Travelled: " + time, 40, 100);
-
+    for(let i=0;i<hp-1;i++){
+        image(planeImg,i*50+10,450);
+    }
     // game over
     if (hp <= 0) {
         //noLoop();
-        background(191);
-        textAlign(CENTER);
+        background('#92E7F5');
+        textAlign(CENTER,CENTER);
         textFont(f, 30)
-        text("Game over!", width/2, height/2 - 40);
-        text("You earned " + keys + " key" + (keys==1?"":"s") + (keys>0?"!":"."), width/2, height/2 + 40);
+        text("Game over!", 150, 200);
+        text("Distance Travelled: " + temp, 150, 250);
+        textSize(25);
+        text("High Score: "+highScore2,150,290);
+        //text("You earned " + keys + " key" + (keys==1?"":"s") + (keys>0?"!":"."), width/2, height/2 + 40);
         cursor(ARROW);
     }
     fill(255);

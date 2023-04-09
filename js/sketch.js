@@ -2,6 +2,9 @@ console.log("TEST EXTENSION ROONONG")
 let peppers=[];
 let p1,p2,p3;
 let person;
+let bomb;
+let grass;
+let bg1;
 function setup(){
     createCanvas(300,500);
     textAlign(CENTER,CENTER);
@@ -13,6 +16,9 @@ function setup(){
     p3 = loadImage("assets/pepper3.png");
     person = loadImage("assets/person.png");
     planeImg = loadImage('/assets/plane.png');
+    bomb = loadImage('/assets/bomb.png');
+    grass = loadImage('/assets/grass.png');
+    bg1 = loadImage('/assets/minigameBackground1.png');
     peppers[0]=p1;
     peppers[1]=p2;
     peppers[2]=p3;
@@ -22,9 +28,9 @@ function setup(){
     time = 0;
     objs = [];
     planePos = createVector(width/2, height/2);
-    hp = 3;
+    hp = 4;
     keys = 0;
-    
+    highScore2=getItem('high2')||0;
 }
 function draw(){
     if(menu.menu){
@@ -102,7 +108,7 @@ function mousePressed(){
         time = 0;
         objs = [];
         planePos = createVector(width/2, height/2);
-        hp = 3;
+        hp = 4;
         keys = 0;
     }
     if(mouseDetect(5,35,5,35) && game2 && !flow.flow){

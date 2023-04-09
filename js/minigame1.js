@@ -101,10 +101,12 @@ class Game1 {
       this.pepper = this.pepper = new Falling(this.gameSpeed);
       this.points = 0;
       this.game1=false;
+      this.highScore1=getItem('high1')||0;
     }
     
     run() {
         background('#b3faff');
+        image(bg1,150,200,300,400);
         this.gameSpeed += 0.1 / getTargetFrameRate();
         this.player.speed = this.gameSpeed;
         this.pepper.speed = this.gameSpeed;
@@ -112,6 +114,9 @@ class Game1 {
         rectMode(CORNER);
         rect(0,400,300,100);
         rectMode(CENTER);
+        for(let i=0;i<3;i++){
+          image(grass,50+100*i,450)
+        }
         this.player.step();
         this.pepper.fall();
         this.player.display();
@@ -122,6 +127,8 @@ class Game1 {
         textFont(f);
         textAlign(CENTER,CENTER);
         text("Points: " + this.points, 150, 50);
+        textSize(20);
+        text("High Score: "+this.highScore1,150,100);
         if (this.pepper.yPos >= 450) {
             this.pepper = new Falling(this.gameSpeed);
             this.points=0;
@@ -132,6 +139,10 @@ class Game1 {
         if (this.touch(this.player, this.pepper)) {
             this.points ++;
             this.pepper = new Falling(this.gameSpeed);
+            if(this.points>this.highScore1){
+              this.highScore1=this.points;
+              storeItem('high1',this.highScore1);
+            }
         }
 
 
