@@ -1,6 +1,7 @@
 console.log("TEST EXTENSION ROONONG")
 let peppers=[];
 let p1,p2,p3;
+let person;
 function setup(){
     createCanvas(300,500);
     textAlign(CENTER,CENTER);
@@ -10,6 +11,8 @@ function setup(){
     p1 = loadImage("assets/pepper1.png");
     p2 = loadImage("assets/pepper2.png");
     p3 = loadImage("assets/pepper3.png");
+    person = loadImage("assets/person.png");
+    planeImg = loadImage('/assets/plane.png');
     peppers[0]=p1;
     peppers[1]=p2;
     peppers[2]=p3;
@@ -21,7 +24,7 @@ function setup(){
     planePos = createVector(width/2, height/2);
     hp = 3;
     keys = 0;
-    planeImg = loadImage('/assets/plane.png')
+    
 }
 function draw(){
     if(menu.menu){

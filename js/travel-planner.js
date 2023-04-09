@@ -15,6 +15,7 @@ function minigame2Display(){
     // if (mouseX > 25 && mouseX < width-25 && mouseY > 25 && mouseY < height-30) cursor("js/plane.png", 16, 16);
     planePos.x = clamp(mouseX-20, 0, width-40);
     planePos.y = clamp(mouseY-25, 0, height-40);
+    imageMode(CORNER);
     image(planeImg, planePos.x, planePos.y);
 
     if ((time++ % (15-(min(5,time/100)))) == 0) {

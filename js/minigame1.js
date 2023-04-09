@@ -54,7 +54,8 @@ class Player extends Moveable {
     
     display() {
         fill(255);
-        circle(this.xPos, this.yPos, objDistance);
+        image(person,this.xPos,this.yPos,objDistance,objDistance);
+        //circle(this.xPos, this.yPos, objDistance);
     }
 
     accel(spd){
@@ -91,7 +92,7 @@ class Falling extends Moveable {
         imageMode(CENTER);
         image(peppers[this.id],this.xPos,this.yPos,objDistance,objDistance); 
     }
-}
+} 
   
 class Game1 {
     constructor() {
@@ -103,21 +104,25 @@ class Game1 {
     }
     
     run() {
-        background('#d8e1e9');
+        background('#b3faff');
         this.gameSpeed += 0.1 / getTargetFrameRate();
         this.player.speed = this.gameSpeed;
         this.pepper.speed = this.gameSpeed;
+        fill('#267a2e');
+        rectMode(CORNER);
+        rect(0,400,300,100);
+        rectMode(CENTER);
         this.player.step();
         this.pepper.fall();
         this.player.display();
         this.pepper.display();
         this.player.update();
-        textSize(30);
+        textSize(40);
         fill(0);
         textFont(f);
         textAlign(CENTER,CENTER);
         text("Points: " + this.points, 150, 50);
-        if (this.pepper.yPos >= 500) {
+        if (this.pepper.yPos >= 450) {
             this.pepper = new Falling(this.gameSpeed);
             this.points=0;
             this.gameSpeed = 100.0 / getTargetFrameRate();
@@ -147,7 +152,7 @@ class Game1 {
 }
   
 let game;
-let objDistance=30;
+let objDistance=40;
   
 
   
