@@ -11,7 +11,7 @@ function clamp(a, b, c) {
 }
 
 function minigame2Display(){
-    background('#d8e1e9');
+    background('#92E7F5');
     // if (mouseX > 25 && mouseX < width-25 && mouseY > 25 && mouseY < height-30) cursor("js/plane.png", 16, 16);
     planePos.x = clamp(mouseX-20, 0, width-40);
     planePos.y = clamp(mouseY-25, 0, height-40);
@@ -38,15 +38,16 @@ function minigame2Display(){
     }
     console.log(objs);
     fill(0);
-    textFont('Arial', 20);
-    text("Distance Travelled: " + time, 20, 40);
+    textAlign(LEFT,CENTER)
+    textFont(f, 30);
+    text("Distance Travelled: " + time, 40, 100);
 
     // game over
     if (hp <= 0) {
         //noLoop();
         background(191);
         textAlign(CENTER);
-        textFont('Arial', 30)
+        textFont(f, 30)
         text("Game over!", width/2, height/2 - 40);
         text("You earned " + keys + " key" + (keys==1?"":"s") + (keys>0?"!":"."), width/2, height/2 + 40);
         cursor(ARROW);

@@ -99,6 +99,11 @@ function mousePressed(){
     if(mouseDetect(175,275,325,375) && flow.flow && flow.stage==3){
         flow.flow=false;
         game2=true;
+        time = 0;
+        objs = [];
+        planePos = createVector(width/2, height/2);
+        hp = 3;
+        keys = 0;
     }
     if(mouseDetect(5,35,5,35) && game2 && !flow.flow){
         flow.flow=true;

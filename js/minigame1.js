@@ -64,12 +64,12 @@ class Player extends Moveable {
 
     update(){
         this.xPos+=this.xVelo;
-        if (this.xPos > 300) {
-            this.xPos = 300;
+        if (this.xPos > 280) {
+            this.xPos = 280;
             this.xVelo=0;
         }
-        if (this.xPos < 0) {
-            this.xPos = 0;
+        if (this.xPos < 20) {
+            this.xPos = 20;
             this.xVelo=0;
         }
         this.xVelo*=0.99;
