@@ -98,7 +98,15 @@ class FlowTime{
         textSize(20);
         text("Current time: ",20,250);
         textSize(40);
-        text(hour()+":"+minute(),120,245); 
+        this.hourTemp=hour();
+        this.minTemp=minute();
+        if(hour()<10){
+            this.hourTemp="0"+hour();
+        }
+        if(minute()<10){
+            this.minTemp="0"+minute();
+        }
+        text(this.hourTemp+":"+this.minTemp,120,245); 
         fill(255);
         if(mouseDetect(75,225,400,450)){
             fill('#cad1d9');

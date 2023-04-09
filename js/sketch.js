@@ -1,18 +1,29 @@
 console.log("TEST EXTENSION ROONONG")
+let peppers=[];
+let p1,p2,p3;
 function setup(){
     createCanvas(300,500);
     textAlign(CENTER,CENTER);
     rectMode(CENTER);
     noStroke();
     f = loadFont("assets/DeliciousHandrawn-Regular.ttf");
+    p1 = loadImage("assets/pepper1.png");
+    p2 = loadImage("assets/pepper2.png");
+    p3 = loadImage("assets/pepper3.png");
+    peppers[0]=p1;
+    peppers[1]=p2;
+    peppers[2]=p3;
     menu=new Menu();
     flow=new FlowTime();
+    game1 = new Game1();
 }
 function draw(){
     if(menu.menu){
         menu.show();
     }else if(flow.flow){
         flow.show();
+    }else if(game1.game1){
+        game1.run();
     }
 }
 
@@ -66,9 +77,14 @@ function mousePressed(){
         flow.stage=4;
         storeItem('stage',flow.stage);
     }
-}
-
-function keyPressed(){
+    if(mouseDetect(25,125,325,375) && flow.flow && flow.stage==3){
+        flow.flow=false;
+        game1.game1=true;
+    }
+    if(mouseDetect(5,35,5,35) && game1.game1 && !flow.flow){
+        flow.flow=true;
+        game1.game1=false;
+    }
 }
 
 
