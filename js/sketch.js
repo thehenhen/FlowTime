@@ -66,8 +66,17 @@ function mousePressed(){
             }
         }else{
             flow.stage--;
-            flow.seconds=0;
-            storeItem('seconds',0);
+            flow.totalBreak+=flow.breakTimer;
+            storeItem('totalBreak',flow.totalBreak);
+        }
+        if(flow.stage==3){
+            flow.breakStartHour=hour();
+            flow.breakStartMin=minute();
+            flow.breakStartSec=second();
+            flow.breakStartTotal=flow.breakStartHour*3600+flow.breakStartMin*60+flow.breakStartSec;
+            storeItem('breakStartHour',flow.breakStartHour);
+            storeItem('breakStartMin',flow.breakStartMin);
+            storeItem('breakStartSec',flow.breakStartSec);
         }
         storeItem('stage',flow.stage);
         
