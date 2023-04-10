@@ -7,7 +7,7 @@ class FlowTime{
 
         this.now=second();
         this.prev=second();
-
+        this.breakTimer=getItem('breakTimer')||0;
 
         this.startHour=getItem('startHour')||0;
         this.startMin=getItem('startMin')||0;
@@ -22,6 +22,7 @@ class FlowTime{
         this.seconds=getItem('seconds')||0;
         this.breakMsg=getItem('break')||"";
         this.recommended;
+
     }
 
     show(){
@@ -135,7 +136,7 @@ class FlowTime{
 
     showWorking(){
         this.total=hour()*3600+minute()*60+second();
-        this.diff=this.total-this.startTotal;
+        this.diff=this.total-this.startTotal-this.breakTimer;
         storeItem('diff',this.diff);
 
 
@@ -195,6 +196,15 @@ class FlowTime{
     }
 
     showBreak(){
+        this.now=second();
+
+        if(this.now!=this.prev){
+            this.breakTimer++;
+            storeItem('breakTimer',this.breakTimer);
+        }
+
+
+
         this.showSec=this.diff%60;
 
         this.showMin=floor(this.diff/60);
@@ -264,6 +274,7 @@ class FlowTime{
         line(270,10,290,30);
         line(270,30,290,10);
         noStroke();
+        this.prev=this.now;
     }
 
     showAccomplished(){

@@ -54,22 +54,23 @@ function mousePressed(){
     if(mouseDetect(75,225,400,450) && flow.flow && (flow.stage==0 || flow.stage==1 || flow.stage==2 || flow.stage==3)){
         if(flow.stage!=3){
             flow.stage++;
+            if(flow.stage==2){
+                flow.startHour=hour();
+                flow.startMin=minute();
+                flow.startSec=second();
+                flow.startTotal=flow.startHour*3600+flow.startMin*60+flow.startSec;
+                storeItem('startSec',flow.startSec);
+                storeItem('startMin',flow.startMin);
+                storeItem('startHour',flow.startHour);
+                storeItem('startTotal',flow.startTotal);
+            }
         }else{
             flow.stage--;
             flow.seconds=0;
             storeItem('seconds',0);
         }
         storeItem('stage',flow.stage);
-        if(flow.stage==2){
-            flow.startHour=hour();
-            flow.startMin=minute();
-            flow.startSec=second();
-            flow.startTotal=flow.startHour*3600+flow.startMin*60+flow.startSec;
-            storeItem('startSec',flow.startSec);
-            storeItem('startMin',flow.startMin);
-            storeItem('startHour',flow.startHour);
-            storeItem('startTotal',flow.startTotal);
-        }
+        
     }
     //rect(150,150,264,30);
     if(mouseDetect(20,280,135,165) && flow.flow && flow.stage==1){
@@ -84,11 +85,13 @@ function mousePressed(){
         flow.stage=0;
         flow.goal="";
         flow.seconds=0;
+        flow.breakTimer=0;
         storeItem('menu',true);
         storeItem('flow',false);
         storeItem('stage',0);
         storeItem('goal',"");
         storeItem('seconds',0);
+        storeItem('breakTimer',0);
     }
     if(flow.flow && flow.stage==2 && mouseDetect(75,225,300,350)){
         flow.stage=4;
