@@ -241,7 +241,7 @@
             rect(75,350,100,50,10);
             fill('#7392B7');
             textSize(20);
-            text("Minigame 1",75,350);
+            text("Pepper Panic",75,350);
 
             fill(255);
             if(mouseDetect(175,275,325,375)){
