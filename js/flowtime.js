@@ -254,7 +254,7 @@ class FlowTime{
         rect(225,350,100,50,10);
         fill('#7392B7');
         textSize(20);
-        text("Minigame 2",225,350);
+        text("Travel Trouble",225,350);
 
         fill(255);
         if(mouseDetect(75,225,400,450)){

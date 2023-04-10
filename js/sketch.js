@@ -27,6 +27,12 @@ function setup(){
     game1 = new Game1();
     time = 0;
     objs = [];
+    bgs = [];
+    clouds = [];
+    for (let i = 1; i < 5; i++) {
+        let img = loadImage("assets/definitely_not_stolen" + i + ".png");
+        clouds.push(img);
+    }
     planePos = createVector(width/2, height/2);
     hp = 4;
     keys = 0;
