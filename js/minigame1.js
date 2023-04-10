@@ -80,7 +80,7 @@ class Falling extends Moveable {
     constructor(speed) {
       super(random(10,290), 0);
       this.speed = speed;
-      this.id=floor(random(0,peppers.length));
+      this.id=floor(random(peppers.length));
     }
     
     fall() {

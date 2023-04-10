@@ -1,6 +1,6 @@
 console.log("TEST EXTENSION ROONONG")
 let peppers=[];
-let p1,p2,p3;
+let p1,p2,p3,p4;
 let person;
 let bomb;
 let grass;
@@ -14,6 +14,7 @@ function setup(){
     p1 = loadImage("assets/pepper1.png");
     p2 = loadImage("assets/pepper2.png");
     p3 = loadImage("assets/pepper3.png");
+    p4 = loadImage("assets/pepper4.png");
     person = loadImage("assets/person.png");
     planeImg = loadImage('/assets/plane.png');
     bomb = loadImage('/assets/bomb.png');
@@ -22,6 +23,7 @@ function setup(){
     peppers[0]=p1;
     peppers[1]=p2;
     peppers[2]=p3;
+    peppers[3]=p4;
     menu=new Menu();
     flow=new FlowTime();
     game1 = new Game1();
