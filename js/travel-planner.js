@@ -5,6 +5,8 @@ const keyDist = 500;
 let game2=false;
 let temp;
 let highScore2;
+let bgs;
+let clouds;
 
 function clamp(a, b, c) {
     if (b > a) return b;
@@ -15,17 +17,27 @@ function clamp(a, b, c) {
 function minigame2Display(){
     background('#92E7F5');
     // if (mouseX > 25 && mouseX < width-25 && mouseY > 25 && mouseY < height-30) cursor("js/plane.png", 16, 16);
-    planePos.x = clamp(mouseX-20, 0, width-40);
+    for (let bg = 0; bg < bgs.length; bg++) {
+        let bgScale = 10;
+        image(...bgs[bg], bgs[bg][0].width/bgScale, bgs[bg][0].height/bgScale);
+        bgs[bg][2] += 3 + time/350;
+    }
+
+    planePos.x = clamp(mouseX-25, 0, width-40);
     planePos.y = clamp(mouseY-25, 0, height-40);
     imageMode(CORNER);
-    image(planeImg, planePos.x, planePos.y);
-
-    if ((time++ % (15-(min(5,time/100)))) == 0) {
+    image(planeImg, planePos.x+5, planePos.y);
+    
+    if (time % 75 == 0) {
+        bgs.push([clouds[int(random(4))], random(width-40)-30, -50]);
+    }
+    if ((time++ % (15-(min(5,int(time/100))))) == 0) {
         objs.push([createVector(random(width*2)-width/2, -50), createVector(random(5)-5/2, 3).normalize().mult(3 + time/300)])
     }
     if (time % keyDist == 0) {
         keys = min(keys, 3);
     }
+    ellipseMode(CENTER);
     for (let obj = 0; obj < objs.length; obj++) {
         let o = objs[obj];
         o[0].add(o[1]);
@@ -54,7 +66,6 @@ function minigame2Display(){
     }
     // game over
     if (hp <= 0) {
-        //noLoop();
         background('#92E7F5');
         textAlign(CENTER,CENTER);
         textFont(f, 30)

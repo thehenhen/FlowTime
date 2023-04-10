@@ -27,6 +27,12 @@ function setup(){
     game1 = new Game1();
     time = 0;
     objs = [];
+    bgs = [];
+    clouds = [];
+    for (let i = 1; i < 5; i++) {
+        let img = loadImage("assets/definitely_not_stolen" + i + ".png");
+        clouds.push(img);
+    }
     planePos = createVector(width/2, height/2);
     hp = 4;
     keys = 0;
@@ -59,10 +65,12 @@ function mousePressed(){
                 flow.startMin=minute();
                 flow.startSec=second();
                 flow.startTotal=flow.startHour*3600+flow.startMin*60+flow.startSec;
+                flow.totalBreak=0;
                 storeItem('startSec',flow.startSec);
                 storeItem('startMin',flow.startMin);
                 storeItem('startHour',flow.startHour);
                 storeItem('startTotal',flow.startTotal);
+                storeItem('totalBreak',flow.totalBreak);
             }
         }else{
             flow.stage--;
